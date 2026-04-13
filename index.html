@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tomoshii</title>
+    <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+    <main id="app">
+        <div class="layout">
+            <section class="scene" aria-hidden="true">
+                <div class="candle-glow"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                    <div class="wick"></div>
+                    <div class="wax"></div>
+                </div>
+            </section>
+            <section class="panel" aria-label="集中タイマー">
+                <p class="eyebrow">tomoshii</p>
+                <h1>ろうそくをともして、<br />静かに集中する。</h1>
+                <form id="timer-form" class="controls">
+                    <div class="control-row">
+                        <label class="field" for="minutes-input">
+                            <div class="field-input">
+                                <button class="step-button" id="decrease-minutes-button" type="button" aria-label="集中時間を1分減らす">-</button>
+                                <input id="minutes-input" name="minutes" type="number" min="1" max="180" step="1" value="10" inputmode="numeric" aria-label="集中時間（分）" />
+                                <span>分</span>
+                                <button class="step-button" id="increase-minutes-button" type="button" aria-label="集中時間を1分増やす">+</button>
+                            </div>
+                        </label>
+                        <button id="start-button" type="submit">スタート</button>
+                        <button id="reset-button" type="button" hidden>リセット</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+    <script src="./site.js" defer></script>
+</body>
+</html>
