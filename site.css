@@ -118,7 +118,7 @@ body {
     width: 82px;
     height: calc(178px - 178px * var(--candle-burn-progress));
     margin-left: -41px;
-    border-radius: 20px 20px 14px 14px;
+    border-radius: 20px 20px 4px 4px;
     background: linear-gradient(180deg, hsl(38 28% 96%), hsl(36 16% 86%));
     border: 1px solid hsla(34 22% 18% / 0.1);
     box-shadow: inset -10px 0 16px hsla(30 18% 30% / 0.08);
