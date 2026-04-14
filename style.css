@@ -3,6 +3,7 @@
     --candle-glow: 0.12;
     --flame-opacity: 0;
     --candle-burn-progress: 0;
+    --control-width: 216px;
     --page-color: hsl(38 24% 84%);
     --ink-color: hsl(30 16% 22%);
     --line-color: hsla(30 18% 18% / 0.16);
@@ -192,12 +193,15 @@ h1 {
 
 .field {
     display: block;
+    width: var(--control-width);
 }
 
 .field-input {
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
+    width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--line-color);
     border-radius: 999px;
@@ -226,7 +230,9 @@ h1 {
 }
 
 #minutes-input {
-    width: 88px;
+    width: 0;
+    flex: 1;
+    min-width: 3ch;
     border: 0;
     padding: 0;
     color: inherit;
@@ -250,12 +256,9 @@ h1 {
     justify-content: center;
 }
 
-#start-button {
-    min-width: 132px;
-}
-
 button {
-    min-width: 144px;
+    width: var(--control-width);
+    min-width: var(--control-width);
     border: 0;
     border-radius: 999px;
     padding: 14px 24px;
@@ -334,6 +337,10 @@ body.session-finished .candle-glow {
     .control-row {
         width: 100%;
         flex-direction: column;
+    }
+
+    .field {
+        width: 100%;
     }
 
     button {
