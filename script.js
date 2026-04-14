@@ -17,6 +17,7 @@ const MINUTES_MIN = 1;
 const MINUTES_MAX = 180;
 const DEFAULT_MINUTES = 10;
 const SESSION_DARKNESS = 0.56;
+const MINUTES_STORAGE_KEY = "tomoshii.minutes";
 
 function clampMinutes(value) {
     return Math.min(MINUTES_MAX, Math.max(MINUTES_MIN, value));
@@ -51,6 +52,28 @@ function setMinutes(value) {
     minutesInput.value = String(clampMinutes(value));
 }
 
+function saveMinutesPreference(value) {
+    try {
+        window.localStorage.setItem(MINUTES_STORAGE_KEY, String(clampMinutes(value)));
+    } catch {
+        // Ignore storage failures and keep the timer usable.
+    }
+}
+
+function loadMinutesPreference() {
+    try {
+        const storedValue = window.localStorage.getItem(MINUTES_STORAGE_KEY);
+
+        if (storedValue === null) {
+            return DEFAULT_MINUTES;
+        }
+
+        return clampMinutes(Number(storedValue) || DEFAULT_MINUTES);
+    } catch {
+        return DEFAULT_MINUTES;
+    }
+}
+
 function updateMinuteButtons() {
     const minutes = clampMinutes(Number(minutesInput.value) || DEFAULT_MINUTES);
 
@@ -65,6 +88,7 @@ function changeMinutes(delta) {
 
     const currentMinutes = clampMinutes(Number(minutesInput.value) || DEFAULT_MINUTES);
     setMinutes(currentMinutes + delta);
+    saveMinutesPreference(Number(minutesInput.value));
     updateMinuteButtons();
 }
 
@@ -203,6 +227,7 @@ timerForm.addEventListener("submit", async (event) => {
 
     const minutes = clampMinutes(Number(minutesInput.value) || DEFAULT_MINUTES);
     setMinutes(minutes);
+    saveMinutesPreference(minutes);
     await startSession(minutes);
 });
 
@@ -221,8 +246,10 @@ increaseMinutesButton.addEventListener("click", () => {
 minutesInput.addEventListener("input", () => {
     if (!isRunning) {
         setMinutes(Number(minutesInput.value) || DEFAULT_MINUTES);
+        saveMinutesPreference(Number(minutesInput.value));
         updateMinuteButtons();
     }
 });
 
+setMinutes(loadMinutesPreference());
 resetToIdleState();
