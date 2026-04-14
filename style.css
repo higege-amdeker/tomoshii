@@ -181,8 +181,8 @@ body {
     padding: 28px 26px 30px;
     border: 1px solid var(--line-color);
     border-radius: 24px;
-    background: hsla(38 30% 94% / 0.42);
-    backdrop-filter: blur(10px);
+    background: hsla(38 30% 94% / 0.82);
+    box-shadow: 0 12px 30px hsla(30 18% 20% / 0.06);
     text-align: center;
 }
 

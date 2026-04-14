@@ -16,18 +16,22 @@ let isRunning = false;
 const MINUTES_MIN = 1;
 const MINUTES_MAX = 180;
 const DEFAULT_MINUTES = 10;
+const SESSION_DARKNESS = 0.56;
 
 function clampMinutes(value) {
     return Math.min(MINUTES_MAX, Math.max(MINUTES_MIN, value));
 }
 
 function setSceneProgress(progress) {
-    const darkness = 0.56 - progress * 0.48;
-    const glow = 0.2 + (1 - progress) * 0.72;
-
-    document.documentElement.style.setProperty("--screen-darkness", darkness.toFixed(3));
-    document.documentElement.style.setProperty("--candle-glow", glow.toFixed(3));
+    document.documentElement.style.setProperty("--screen-darkness", SESSION_DARKNESS.toFixed(3));
+    document.documentElement.style.setProperty("--candle-glow", "0.92");
     document.documentElement.style.setProperty("--candle-burn-progress", progress.toFixed(3));
+}
+
+function setFinishedScene() {
+    document.documentElement.style.setProperty("--screen-darkness", "0");
+    document.documentElement.style.setProperty("--candle-glow", "0.12");
+    document.documentElement.style.setProperty("--candle-burn-progress", "1");
 }
 
 function setIdleScene() {
@@ -151,7 +155,7 @@ function finishSession() {
     body.classList.add("session-finished");
     showStartButton("もう一度はじめる");
     minutesInput.disabled = false;
-    setSceneProgress(1);
+    setFinishedScene();
     updateMinuteButtons();
     playGentleChime();
 }
