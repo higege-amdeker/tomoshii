@@ -131,7 +131,7 @@ body {
 
 .wick {
     position: absolute;
-    z-index: 4;
+    z-index: 1;
     left: 50%;
     top: calc(42px + 178px * var(--candle-burn-progress));
     width: 4px;
