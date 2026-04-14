@@ -85,8 +85,36 @@ body {
     height: 270px;
 }
 
+.saucer {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 14px;
+    width: 152px;
+    height: 20px;
+    margin-left: -76px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, hsl(210 7% 84%), hsl(210 8% 72%));
+    border: 1px solid hsla(210 10% 28% / 0.18);
+    box-shadow: 0 6px 10px hsla(30 24% 20% / 0.06);
+}
+
+.saucer-shadow {
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    bottom: 8px;
+    width: 116px;
+    height: 10px;
+    margin-left: -58px;
+    border-radius: 999px;
+    background: hsla(210 10% 18% / 0.1);
+    filter: blur(5px);
+}
+
 .flame {
     position: absolute;
+    z-index: 5;
     left: 50%;
     top: calc(0px + 178px * var(--candle-burn-progress));
     width: 30px;
@@ -103,6 +131,7 @@ body {
 
 .wick {
     position: absolute;
+    z-index: 4;
     left: 50%;
     top: calc(42px + 178px * var(--candle-burn-progress));
     width: 4px;
@@ -114,6 +143,7 @@ body {
 
 .wax {
     position: absolute;
+    z-index: 2;
     left: 50%;
     bottom: 28px;
     width: 82px;
