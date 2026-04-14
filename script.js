@@ -1,3 +1,5 @@
+/* Tomoshii timer interactions and scene control. */
+
 const body = document.body;
 const minutesInput = document.getElementById("minutes-input");
 const timerForm = document.getElementById("timer-form");
